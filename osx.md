@@ -1,0 +1,14 @@
+### OSX Notes ###
+
+
+### Troubleshooting ###
+
+Problem:
+```bash
+Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.
+```
+
+Solution:
+```bash
+sudo xcodebuild -license accept
+```
