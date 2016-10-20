@@ -32,8 +32,36 @@
 .dropShadow {
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 }
+
+.envelopeWindow {
+  box-shadow: inset 0px 0px 50px -9px rgba(0,0,0,0.9);
+  border-radius: 10px;
+}
 ```
 
+
+```
+.overlay-container {
+  width: 100%; 
+  position: relative; 
+  overflow: scroll;
+  box-shadow: inset 0px 0px 100px -10px rgba(0,0,0,0.75);
+  border-radius: 5px;
+}
+
+.overlay {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: scroll;
+  background-color:rgba(255, 255, 255, 0.9);
+  background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent\9; /* ie fallback png background image */
+}
+
+```
+
+  
 
 ## Mobile Friendly Content ##
 
