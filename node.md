@@ -1,5 +1,18 @@
 # Node #
 
+## Resources ##
+
+Folder Structure
+
+- https://blog.risingstack.com/node-js-project-structure-tutorial-node-js-at-scale/
+
+
+## Notes ##
+
+Use exact version of dependencies:
+```
+npm shrinkwrap
+```
 
 
 ## Debugging ##
@@ -17,7 +30,3 @@ http://www.node-tap.org/basics/
 
 http://jscs.info/
 
-
-## Folder Structure ##
-
-https://blog.risingstack.com/node-js-project-structure-tutorial-node-js-at-scale/
