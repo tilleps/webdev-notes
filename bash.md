@@ -21,8 +21,27 @@ sudo usermod -a -G groupName userName
 
 
 Convert to mp3
+
 ```
 ffmpeg -i "file.m4a" -acodec libmp3lame -ab 128k "file.mp3" 
+```
+
+
+Outputs
+/dev/fd/0  stdin
+/dev/fd/1  stdout
+/dev/fd/2  stderr
+
+
+```
+ls -l * 2> /var/tmp/unaccessible-in-spool
+ls -l * > /var/tmp/spoollist 2>&1
+ls -l * &> /var/tmp/spoollist 2>&1
+ls -l * 2 >& 1 > /var/tmp/spoollist
+
+2>/dev/null
+&> FILE
+ > FILE 2>&1
 ```
 
 
@@ -56,6 +75,101 @@ ffmpeg -i "file.m4a" -acodec libmp3lame -ab 128k "file.mp3"
   less        better than cat, doesn't flood screen, same keys
   find        find files, e.g. find / -name <filename>
   !!          last command, e.g. sudo !!
+```
+
+
+## Scripting Template ##
+
+```bash
+  #!/usr/bin/env bash
+  #
+  # Bash by Example
+  # 
+  # @author Eugene Song <tilleps@gmail.com>
+  # @reference http://tldp.org/LDP/Bash-Beginners-Guide/html/chap_08.html
+
+
+
+  #
+  # Check number of arguments
+  #
+  if [ "$#" == "2" ]; then
+    echo -e "Number of arguments is 2"
+  fi
+
+
+
+  #
+  # Echo Examples
+  #
+  function echoAction() {
+    echo "Bash by Example";
+
+    echo "Print \t \n \r"
+    echo -e "Convert \t \n \r"
+    echo -e "Escaped \\\t \\\n \\\r"
+  }
+
+
+
+
+  function inputAction() {
+    echo "What is your name?"
+    read inputName
+  
+    echo "You have typed: ${inputName}"
+  }
+
+
+  function exampleAction () {
+    echo $"example function! $1";
+  }
+
+
+
+  case "$1" in
+  
+    echo)
+      echoAction
+    ;;
+  
+    example)
+      exampleAction "what"
+    ;;
+  
+    input)
+      inputAction
+    ;;
+  
+    start)
+      start
+    ;;
+
+    stop)
+      stop
+    ;;
+
+    status)
+      status anacron
+    ;;
+  
+    restart)
+      stop
+      start
+    ;;
+
+    condrestart)
+      if test "x`pidof anacron`" != x; then
+        stop
+        start
+      fi
+    ;;
+
+    *)
+      echo $"Usage: $0 {example|start|stop|restart|condrestart|status}"
+      exit 1
+
+  esac
 ```
 
 
