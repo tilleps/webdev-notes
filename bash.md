@@ -45,6 +45,7 @@ ls -l * 2 >& 1 > /var/tmp/spoollist
 ```
 
 
+
 ## Shortcuts ##
 
 ```
@@ -75,6 +76,10 @@ ls -l * 2 >& 1 > /var/tmp/spoollist
   less        better than cat, doesn't flood screen, same keys
   find        find files, e.g. find / -name <filename>
   !!          last command, e.g. sudo !!
+  $!          PID of last script
+  $$          PID of current script
+  $#          Number of arguments of script
+  $?          Exit code of last script
 ```
 
 
@@ -170,30 +175,7 @@ ls -l * 2 >& 1 > /var/tmp/spoollist
       exit 1
 
   esac
-```
-
-
-## Postgres ##
-
-
-SSH Tunnel
-
-```
-ssh -nNT -L 5432:localhost:5432
-```
-
-Backup Postgres
-
-```
-sudo -i -u postgres pg_dumpall -U postgres > backups/postgres.sql
-sudo -i -u postgres pg_dumpall -U postgres | gzip > backups/postgres.sql.gz
-```
-
-Restore Postgres
-```
-psql -f infile postgres
-gunzip -c backups/postgres.sql.gz | psql -U postgres
-```
+`
 
 
 ## IPTables ##
