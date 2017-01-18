@@ -1,6 +1,25 @@
 # ExpressJS Notes #
 
 
+## Requests/Responses ##
+
+
+Determine if to send JSON format
+```
+req.accepts('html, json') === 'json'
+```
+
+
+jQuery $.ajax setting:
+```
+$.ajax({
+  dataType: "json",
+});
+```
+
+
+
+
 ## Sessions ##
 
 ```javascript
