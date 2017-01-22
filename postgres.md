@@ -1,6 +1,8 @@
 # Postgres #
 
 
+## Resources ##
+
 - https://help.ubuntu.com/community/PostgreSQL
 - https://www.postgresql.org/download/linux/ubuntu/
 - http://tecadmin.net/postgresql-cheat-sheet/
@@ -35,6 +37,16 @@ xattr -rc DBeaver.app
 ## Gotchas ##
 
 - If you use table names that have mixed/upper casing, then you must double quote '"tbl1"'
+
+
+## Troubleshooting ##
+
+
+*error: role "postgres" does not exist*
+
+```
+createuser -s postgres
+```
 
 
 
@@ -142,6 +154,10 @@ CREATE INDEX tsv_idx ON tbl1 USING GIN(tsv)
 
 
 ALTER TABLE "tbl1" RENAME TO "tbl2"
+
+
+TRUNCATE tbl1 RESTART IDENTITY CASCADE
+
 ```
 
 
