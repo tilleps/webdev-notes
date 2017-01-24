@@ -2,9 +2,22 @@
 
 
 ## Articles/Resources ##
+
 - http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html
 
 
+## Sign / Verify ##
+
+
+```
+openssl genrsa -out private.pem 1024
+openssl rsa -in private.pem -out public.pem -outform PEM -pubout
+```
+
+```
+  echo -n "data-to-sign" | openssl dgst -RSA-SHA256 -sign private.pem > signed
+  base64 signed
+```
 
 
 ## Port Forwarding ##
@@ -36,3 +49,9 @@ Check for existing SSH tunnels
     IdentityFile ~/.ssh/gitlab.pem
   #  IdentitiesOnly yes
 ```
+
+
+## Setup LDAP SSH Access ##
+
+- https://eng.ucmerced.edu/soe/computing/services/ssh-based-service/ldap-ssh-access
+
