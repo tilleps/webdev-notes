@@ -1,6 +1,13 @@
 # DigitalOcean Notes #
 
-Guide
+## Resources ##
+
+- https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04
+
+
+
+## Guide ##
+
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
 
 
