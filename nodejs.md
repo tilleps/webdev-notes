@@ -2,9 +2,9 @@
 
 ## Resources ##
 
-Folder Structure
-
-- https://blog.risingstack.com/node-js-project-structure-tutorial-node-js-at-scale/
+- (Node Inspector Manager)[https://chrome.google.com/webstore/detail/nim-node-inspector-manage/gnhhdgbaldcilmgcpfddgdbkhjohddkj?hl=en-US]
+- (Folder Structure)[https://blog.risingstack.com/node-js-project-structure-tutorial-node-js-at-scale/]
+- (JSend Response Format)[https://labs.omniti.com/labs/jsend]
 
 
 ## Notes ##
