@@ -141,6 +141,8 @@ CREATE TABLE "tbl1" (
   name VARCHAR(100),
   description TEXT,
   date DATE
+  timestamp TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+  CHECK(EXTRACT(TIMEZONE FROM my_timestamp) = '0'),
   tsv TSVECTOR
 )
 
@@ -244,6 +246,14 @@ INSERT INTO users (name, age) VALUES ('Bob', 10) RETURN id
   # List Databases:
   SELECT datname FROM pg_database WHERE datistemplate = false;
 ```
+
+Timezone related
+```
+SHOW timezone;
+SET TIME ZONE 'UTC';
+SELECT NOW()
+```
+
 
 ### Sequences ###
 
