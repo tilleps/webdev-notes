@@ -2,9 +2,22 @@
 
 
 ## Articles/Resources ##
+
 - http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html
 - http://lifepluslinux.blogspot.com/2017/01/look-before-you-paste-from-website-to.html
 
+## Sign / Verify ##
+
+
+```
+openssl genrsa -out private.pem 1024
+openssl rsa -in private.pem -out public.pem -outform PEM -pubout
+```
+
+```
+  echo -n "data-to-sign" | openssl dgst -RSA-SHA256 -sign private.pem > signed
+  base64 signed
+```
 
 
 ## Port Forwarding ##
@@ -38,7 +51,6 @@ Check for existing SSH tunnels
 ```
 
 
-
 ## SSH Config ##
 
 ```
@@ -49,3 +61,10 @@ Check for existing SSH tunnels
   GSSAPIAuthentication no
   IdentitiesOnly yes
 ```
+
+
+## Setup LDAP SSH Access ##
+
+- https://eng.ucmerced.edu/soe/computing/services/ssh-based-service/ldap-ssh-access
+
+
