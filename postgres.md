@@ -7,9 +7,10 @@
 - https://www.postgresql.org/download/linux/ubuntu/
 - http://tecadmin.net/postgresql-cheat-sheet/
 - http://shisaa.jp/postset/postgresql-full-text-search-part-1.html
+- https://www.compose.com/articles/postgraphql-postgresql-meets-graphql/
 
 
-Install on Ubuntu 16.04
+## Install on Ubuntu 16.04 ##
 
 ```
 echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" | tee /etc/apt/sources.list.d/pgdg.list
