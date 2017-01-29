@@ -45,6 +45,11 @@ ls -l * 2 >& 1 > /var/tmp/spoollist
 ```
 
 
+Deploy
+```
+rsync -Phurv --exclude='.git/' /source/path remote-server:/path/to/destination
+```
+
 
 ## Shortcuts ##
 
