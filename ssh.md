@@ -20,6 +20,20 @@ openssl rsa -in private.pem -out public.pem -outform PEM -pubout
 ```
 
 
+## Run Script ##
+
+Running a script on a remote server
+
+```bash
+ssh user@host 'bash -s' < /path/script.sh
+```
+Or
+
+```bash
+cat /path/script.sh | ssh user@host 'bash -s'
+```
+
+
 ## Port Forwarding ##
 
 Remote Port Forwarding
@@ -66,5 +80,7 @@ Check for existing SSH tunnels
 ## Setup LDAP SSH Access ##
 
 - https://eng.ucmerced.edu/soe/computing/services/ssh-based-service/ldap-ssh-access
+
+
 
 
