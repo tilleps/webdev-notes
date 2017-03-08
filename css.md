@@ -1,6 +1,8 @@
 # CSS Notes #
 
 
+- http://breakpoint-sass.com/
+- https://github.com/at-import/Singularity
 
 
 ## Recommended Defaults ##
