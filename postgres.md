@@ -155,6 +155,8 @@ ALTER TABLE tbl1 DROP col_name
 ALTER TABLE tbl1 ADD COLUMN tsv TSVECTOR
 CREATE INDEX tsv_idx ON tbl1 USING GIN(tsv)
 
+CREATE UNIQUE INDEX user_identity_idx ON "User"((identities->>'user_id'), (identities->>'provider'), (identities->>'connection'));
+
 
 ALTER TABLE "tbl1" RENAME TO "tbl2"
 
@@ -277,3 +279,20 @@ BEGIN;
 COPY Users FROM 'input_file';
 SELECT setval('foo_seq', MAX(id)) FROM Users;
 END;
+
+
+### Full Text Search ###
+
+- https://antjanus.com/blog/tutorials/using-postgresql-as-a-search-engine/
+
+
+
+```
+ALTER TABLE posts ADD COLUMN searchtext TSVECTOR;
+UPDATE posts SET searchtext = to_tsvector('english', title || '' || content || '' || tags)
+CREATE INDEX searchtext_gin ON posts USING GIN(searchtext);
+CREATE TRIGGER ts_searchtext BEFORE INSERT OR UPDATE ON posts FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchtext', 'pg_catalog.english', 'title', 'content', 'tags')
+SELECT * FROM posts where searchtext @@ to_tsquery('keyword');
+```
+
+
