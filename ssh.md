@@ -83,4 +83,8 @@ Check for existing SSH tunnels
 
 
 
+GPG Multikey
 
+```
+git archive --remote=$REMOTE_URL HEAD $SECRETS_FILENAME.gpg | tar -Ox | gpg --decrypt -q 2>>$LOG_LOCATION | xargs -I{} echo "export "\{\}
+```

@@ -14,6 +14,10 @@ lsb_release -a
 ```
 
 
+```
+sudo env "PATH=$PATH" command
+```
+
 
 ```
 sudo usermod -a -G groupName userName
