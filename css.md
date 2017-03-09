@@ -121,3 +121,19 @@ Scrolling/100% height issue - Safari Fix
   position: absolute;
 }
 ```
+
+Some weird padding/margin issue, needing to scroll a little bit
+```css
+body {
+  height: 100vh;
+}
+```
+
+Anchors not taking up full space of li
+```css
+li {}
+li a {
+  padding: 20px;
+  display: block;
+}
+```
