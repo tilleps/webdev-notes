@@ -18,6 +18,10 @@ lsb_release -a
 sudo env "PATH=$PATH" command
 ```
 
+Loading Env files with spaces and exclude comments
+```
+eval `cat ${ENV_DECRYPTED_PATH} | grep -v ^#` nodemon ${ENTRY_POINT} 
+```
 
 ```
 sudo usermod -a -G groupName userName
