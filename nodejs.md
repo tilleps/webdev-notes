@@ -20,6 +20,8 @@ npm shrinkwrap
 ```node --inspect index.js```
 ```node --inspect --debug-brk index.js```
 
+Finding all environment variables used:  ```grep -rhoe 'process.env.[^, ]\+' --exclude-dir=node_modules .```
+
 
 ## Testing ##
 
@@ -30,3 +32,11 @@ http://www.node-tap.org/basics/
 
 http://jscs.info/
 
+
+## Modules Installing ##
+
+
+Install module from git repo
+```
+npm install git+https://repodomain/project.git
+```
