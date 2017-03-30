@@ -143,6 +143,7 @@ CREATE TABLE "tbl1" (
   description TEXT,
   date DATE
   timestamp TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW(),
+	expires_datetime TIMESTAMP DEFAULT NOW() + '15 minutes',  
   CHECK(EXTRACT(TIMEZONE FROM my_timestamp) = '0'),
   tsv TSVECTOR
 )
