@@ -40,3 +40,13 @@ Install module from git repo
 ```
 npm install git+https://repodomain/project.git
 ```
+
+
+## Modules Authoring ###
+
+```javascript
+//  Run if called directly
+if (require.main === module) {
+  module.exports();
+}
+```

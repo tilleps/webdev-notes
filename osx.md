@@ -12,3 +12,13 @@ Solution:
 ```bash
 sudo xcodebuild -license accept
 ```
+
+
+
+Problem: "SSL certificate problem: Invalid certificate chain"
+Solution: https://support.apple.com/en-ca/HT203811
+
+
+
+Screenshot Awesomeness (screenshot regions): `cmd+shift+4` then press `spacebar`
+
