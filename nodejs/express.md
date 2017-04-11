@@ -36,3 +36,31 @@ app.use(session({
 }));
 ```
 
+
+```javascript
+//
+//  Session (Cookie)
+//  Note: Requires cookie-parser
+//
+
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
+
+//  Cookie Parser
+app.use(cookieParser());
+
+app.set('trust proxy', true);
+
+app.use(cookieSession({
+  //  Secure cookies behind proxies
+  //  https://expressjs.com/en/guide/behind-proxies.html
+  //  Need to set 'trust proxy' to true
+  secure: true,
+  name: config.session.key || 'authorization.sid',
+  //keys: ['key1', 'key2'],
+  secret: config.secrets.session,
+  sameSite: true,
+  //domain: '',
+  maxAge: config.session.maxAge
+}));
+```
