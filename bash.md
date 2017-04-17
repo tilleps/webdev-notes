@@ -23,6 +23,13 @@ Loading Env files with spaces and exclude comments
 eval `cat ${ENV_DECRYPTED_PATH} | grep -v ^#` nodemon ${ENTRY_POINT} 
 ```
 
+WITHOUT EVAL
+```
+env -S "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$')" "$@"
+env -S "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$')" node index.js
+```
+
+
 ```
 sudo usermod -a -G groupName userName
 ```
