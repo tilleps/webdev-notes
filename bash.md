@@ -29,6 +29,18 @@ env -S "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$')" "$@"
 env -S "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$')" node index.js
 ```
 
+Loading environment variables from file
+```
+# Works for OSX (but not Ubuntu ;_;)
+#env -S "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$')" "$@"
+
+# Works on Ubuntu (not on OSX ;_;)
+#env "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$' | xargs -d "\n" env)" "$@"
+
+# Works for both OSX and Ubuntu, but uses eval ;_;
+eval $(cat ${APP_ENV_FILE} | grep -iE "^[a-z_0-9]+=(\".*\"|'.*')$" | grep -v ^# | grep -v '^$') "$@"
+```
+
 
 ```
 sudo usermod -a -G groupName userName
