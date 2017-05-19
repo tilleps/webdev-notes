@@ -29,3 +29,17 @@ location /__STATUS__/node {
   return 200 'up';
 }
 ```
+
+
+
+## Dynamic Configs ##
+
+server {
+    server_name ~^(?<app_env>.*)\.domain\.com;
+    
+    # Dynamic Route
+    location / {
+      default_type text/html;
+      return 200 $app_env;
+    }
+}
