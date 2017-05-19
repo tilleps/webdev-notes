@@ -88,3 +88,46 @@ GPG Multikey
 ```
 git archive --remote=$REMOTE_URL HEAD $SECRETS_FILENAME.gpg | tar -Ox | gpg --decrypt -q 2>>$LOG_LOCATION | xargs -I{} echo "export "\{\}
 ```
+
+
+## Control Path ##
+
+
+List keys in SSH Agent
+```
+ssh-add -L
+```
+
+
+Setup control path
+```
+mkdir -p ~/.ssh/cp
+chmod 700 ~/.ssh/cp
+```
+
+
+### ~/.ssh/config ###
+
+
+```
+  # Protected Server
+  Host server01
+  	ForwardAgent yes
+    HostName server01.domain.com
+  	ProxyCommand ssh -A -q -W %h:%p jumpbox01
+  
+  # Jumpbox
+  Host jumpbox01
+  	ControlMaster auto
+  	ControlPath ~/.ssh/cp/%r@%h:%p
+  	ControlPersist 5m
+  	ForwardAgent yes
+    HostName jumpbox01.domain.com
+```
+
+
+
+```
+ssh -O check jumpbox01
+ssh -O stop jumpbox01
+```
