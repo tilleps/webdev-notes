@@ -137,3 +137,12 @@ li a {
   display: block;
 }
 ```
+
+Flexbox not using full height
+```css
+{
+  min-height: -moz-min-content; // not implemented
+  min-height: -webkit-min-content // works for opera and safari
+  min-height: min-content // works for chrome
+}
+```
