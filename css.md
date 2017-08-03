@@ -113,6 +113,25 @@ Centered content
 ```
 
 
+## Floats ##
+
+```css
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+```
+
+```html
+<div class="group">
+  <div class="is-floated"></div>
+  <div class="is-floated"></div>
+  <div class="is-floated"></div>
+</div>
+```
+
+
 ## Troubleshooting ##
 
 Scrolling/100% height issue - Safari Fix
