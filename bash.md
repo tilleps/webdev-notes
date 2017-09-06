@@ -227,3 +227,11 @@ Delete Rule
 ```
 iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 10022 -j DNAT --to 10.199.199.144:22
 ```
+
+
+## One-Liners ##
+
+Check for clock drift on multiple servers
+```
+for x in {1..3}; do ssh subdomain0$x.example.com date -u; done
+```
