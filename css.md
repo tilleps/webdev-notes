@@ -168,5 +168,16 @@ Flexbox not using full height
 
 ## Random ##
 
+```
 is-* state
 has-* content
+
+is-active
+is-collapsed
+is-hidden
+is-visible
+
+has-text
+has-text-centered
+has-text-aligned
+```
