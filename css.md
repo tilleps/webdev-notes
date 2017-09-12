@@ -165,3 +165,8 @@ Flexbox not using full height
   min-height: min-content // works for chrome
 }
 ```
+
+## Random ##
+
+is-* state
+has-* content
