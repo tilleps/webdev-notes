@@ -31,3 +31,22 @@ for(var entry of formData.entries()) {
 
 ```
 
+
+## Async/Await ##
+
+```
+try {
+  //  Serial loading
+  await firstPromise();
+  await secondPromise();
+  
+  //  Parallel loading
+  await Promise.all([
+    firstPromise(),
+    secondPromise()
+  ])
+}
+catch (e) {
+  
+}
+```
