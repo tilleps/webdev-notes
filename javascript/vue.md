@@ -1,6 +1,21 @@
 # Vue Notes #
 
 
+
+
+```
+<button v-on:click="$emit('remove', index)">delete</button>
+
+<div v-for="(row, index) in items"
+  v-bind:key="index"
+  v-bind:index="index"
+  v-bind:item="row"
+  v-on:remove="$store.dispatch('people/deleteByIndexAndLoad', index)"
+  v-on:error="$store.dispatch('error/handleError', index)"
+>
+</div>
+```
+
 ```
 {
   namespaced: true,
