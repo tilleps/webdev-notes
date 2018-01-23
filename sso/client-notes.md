@@ -8,13 +8,13 @@ https://labs.omniti.com/labs/jsend
 
 
 Redirect Login
-GET http://authserver/oauth/v2/authorize?redirect_uri=http://client/authcode&response_type=code&client_id=untrustedClient&scope=offline_access
+GET http://authserver/oauth/v2/authorize?redirect_uri=http://client/authcode&response_type=code&client_id={myClientID}&scope=offline_access
 
 
 Access Token (User)
 
 POST http://authserver/oauth/v2/token
-Authorization: Basic {abc123:ssh-secret}
+Authorization: Basic {myClientID:myClientSecret}
 ```javascript
 {
   "grant_type": "password",
@@ -36,7 +36,7 @@ Authorization: Basic {abc123:ssh-secret}
 
 Access Token (Client)
 POST http://authserver/oauth/v2/token
-Authorization: Basic {abc123:ssh-secret}
+Authorization: Basic {myClientID:myClientSecret}
 
 ```javascript
 {
@@ -53,7 +53,7 @@ Authorization: Basic {abc123:ssh-secret}
 
 Access Token (API Client)
 POST http://authserver/oauth/v2/token
-Authorization: Basic {abc123:ssh-secret}
+Authorization: Basic {myClientID:myClientSecret}
 ```javascript
 {
   "grant_type": "client_credentials",
@@ -70,7 +70,7 @@ Authorization: Basic {abc123:ssh-secret}
 ```javascript
 {
   "error":"access_denied",
-  "error_description": "Client is not authorized to access \"https://serviceinnovation.teslamotors.com/api/2\". You might probably want to create a \"client-grant\" associated to this API. See: https://auth0.com/docs/api/v2#!/Client_Grants/post_client_grants"
+  "error_description": "Client is not authorized to access \"https://someservice.yourdomain.com/api/2\". You might probably want to create a \"client-grant\" associated to this API. See: https://auth0.com/docs/api/v2#!/Client_Grants/post_client_grants"
 }
 ```
 
@@ -81,7 +81,7 @@ Authorization: Bearer {AccessToken}
 
 Refresh Token
 POST http://authserver/oauth/v2/token
-Authorization: Basic {abc123:ssh-secret}
+Authorization: Basic {myClientID:myClientSecret}
 ```javascript
 {
   "grant_type": "refresh_token",

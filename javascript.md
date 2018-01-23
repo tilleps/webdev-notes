@@ -1,6 +1,21 @@
 # Javascript Notes #
 
 
+
+## JSON ##
+
+
+Keep undefined values in a JSON
+```javascript
+  //  Keep the undefined values
+  function replacer(k, v) {
+    return (typeof v === 'undefined') ? null : v;
+  }
+  
+  console.log(JSON.stringify(module.exports, replacer, 2));
+```
+
+
 ## FormData ##
 
 

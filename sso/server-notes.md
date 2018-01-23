@@ -6,11 +6,11 @@ grant_type "urn:ietf:params:oauth:grant-type:jwt-bearer"
 
 
 - DO NOT have client_secret accessible to public (request code instead)
-- https://localhost:3000/dialog/authorize?redirect_uri=https://localhost:3000&response_type=code&client_id=abc123&scope=offline_access
+- https://localhost:3000/dialog/authorize?redirect_uri=https://localhost:3000&response_type=code&client_id=myClientID&scope=offline_access
 
-- http://localhost:3000/dialog/authorize?redirect_uri=https://localhost:8080/receivecode&response_type=code&client_id=abc123&scope=offline_access
+- http://localhost:3000/dialog/authorize?redirect_uri=https://localhost:8080/receivecode&response_type=code&client_id=myClientID&scope=offline_access
 
-- https://authserver/dialog/authorize?redirect_uri=https://apiserver/receivetoken&response_type=code&client_id=abc123&scope=offline_access
+- https://authserver/dialog/authorize?redirect_uri=https://apiserver/receivetoken&response_type=code&client_id=myClientID&scope=offline_access
 
 
       code          : req.query.code,
@@ -22,7 +22,7 @@ grant_type "urn:ietf:params:oauth:grant-type:jwt-bearer"
       
 
 - ACCESS TOKEN - Post to https://localhost:3000/oauth/token
-  code=7HMEo1VA1xVS6EkJ&redirect_uri=https://localhost:3000&client_id=abc123&client_secret=ssh-secret&grant_type=authorization_code
+  code=7HMEo1VA1xVS6EkJ&redirect_uri=https://localhost:3000&client_id=myClientID&client_secret=myClientSecret&grant_type=authorization_code
   
   Add if you want refresh token
   scope=offline_access
@@ -79,7 +79,7 @@ Authorize Server -> Generate Access Token
 Successful
 ```
 {
-  "audience": "abc123",
+  "audience": "myClientID",
   "expires_in": null
 }
 ```
@@ -137,7 +137,7 @@ POST /oauth/token
 2. Response
 ```
 {
-  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3RpbGxlcHMuYXV0aDAuY29tLyIsInN1YiI6ImFkWDZSR3F0Zk9jazc5R2R6ekFadW1tY0t0bXpkTXg5QGNsaWVudHMiLCJhdWQiOiJodHRwczovL3NlcnZpY2Vpbm5vdmF0aW9uLnRlc2xhbW90b3JzLmNvbS9hcGkvIiwiZXhwIjoxNDgzODI2NTUyLCJpYXQiOjE0ODM3NDAxNTIsInNjb3BlIjoiY3JlYXRlOnRvb2xzIHJlYWQ6dG9vbHMifQ.2Z0r9A7zVAHSUXzZ-JBnwPt6INjaJgGwI2Qu92fu2Xk",
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3RpbGxlcHMuYXV0aDAuY29tLyIsInN1YiI6Ikc1a1JuQjJRQXF0VDhUcFZSdTJQYjU1Mmt3a1dDZDhnakVaOHVAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vc29tZXNlcnZpY2UueW91cmRvbWFpbi5jb20vYXBpLyIsImV4cCI6MTQ4MzgyNjU1MiwiaWF0IjoxNDgzNzQwMTUyLCJzY29wZSI6ImNyZWF0ZTp0b29scyByZWFkOnRvb2xzIn0.BTT5yr6BXwWVn1kp6LdtaehNgRfRVK55H5-gipeILjo",
   "token_type": "Bearer"
 }
 ```
@@ -146,10 +146,10 @@ POST /oauth/token
 ```
 {
   "iss": "https://tilleps.auth0.com/",
-  "sub": "adX6RGqtfOck79GdzzAZummcKtmzdMx9@clients",
-  "aud": "https://serviceinnovation.teslamotors.com/api/",
-  "exp": 1483826989,
-  "iat": 1483740589,
+  "sub": "G5kRnB2QAqtT8TpVRu2Pb552kwkWCd8gjEZ8u@clients",
+  "aud": "https://someservice.yourdomain.com/api/",
+  "exp": 1483826552,
+  "iat": 1483740152,
   "scope": "create:tools read:tools"
 }
 ```
@@ -246,7 +246,7 @@ InResponseTo: Randomly generated ID by SAML Requester
 
 
 **Redirect from SP to IDP:**
-SAMLRequest=nVPLbsIwEPyVyPeQB4WCRUAUVBWpjwjSHnqpjLMUS46deh2gf18nPMShcOAUeXd2dnZ2MxjtCultwKDQKiFRKySj4QBZIUs6ruxazeGnArSegymkTSIhlVFUMxRIFSsAqeV0MX55pnErpKXRVnMtiTebJuSrDb0263DWiZfdvLdctUPeJd7HsaGrcEDECmYKLVPWhcLo3g8jP77L4oi2
+SAMLRequest=bdaaTZzpJHJCcm3dn3TK8nKUmEZHqM46fDpr8UPDB5GvEAcTheR6UM8GSVJ5cY5jQ3rHc3d4UHnBH5URmmxM4E2xuQCY7PNwMub5Vp4XypaULs4UMZuEUJBT592p7YAubdaaTZzpJHJCcm3dn3TK8nKUmEZHqM46fDpr8UPDB5GvEAcTheR6UM8GSVJ5cY5jQ3rHc3d4UHnBH5URmmxM4E2xuQCY7PNwMub5Vp4XypaULs4UMZuEUJBT592p7YAu
 ```xml
   <?xml version="1.0"?>
   <samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="_3e83a5ca52b6d8bf30c6" Version="2.0" IssueInstant="2017-01-24T21:39:52.975Z" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceURL="http://localhost:8080/saml/consume" Destination="http://localhost:8000/saml/v2/assert">
@@ -278,13 +278,13 @@ SAMLRequest=nVPLbsIwEPyVyPeQB4WCRUAUVBWpjwjSHnqpjLMUS46deh2gf18nPMShcOAUeXd2dnZ2
                       <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
                   </Transforms>
                   <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
-                  <DigestValue>9K6jj5vcP8Y/SwBFwKuLQf0NUq9umk1Dv/rGxfVVC1k=</DigestValue>
+                  <DigestValue>rGxfVVC1k/bzjDTaR5uJ2RPz5mmgfQ/vcP8Y=</DigestValue>
               </Reference>
           </SignedInfo>
-          <SignatureValue>BVuLzRcoqk2Gy1cE2u3VcmdiJ9V/c7URjp6cbjaT4H29fvaSBll58ZqxXfxU80cMi77AdvIhs0RXEJnusPWjQQtT57eKYfbWteLD0WmlVqKJz5uvmUa/H/VJDDMnHv6RiIjLaCDX39oFwSViNKsQGcaYZKWla43JktUQ9pTLGLeHNV7eEtaXA9VMo2O8eKQNAg1exR87m6UQLQIUYgpuSNQRjNhw9pXKRSFcy+ItHy1ahgkqbde2O4Xoa2TErzKJmuZB1yQXd+Q0Tf5OQGZqgXV/w/MF4OPEJxWeMuFxrXqgkdxwFXD2Bmot0di1Ns8oiEHoHD7lwDKxi5eqw7AYjw==</SignatureValue>
+          <SignatureValue>apKrFrNPjqYBm4CVYPYCqeC5AxGazNhfwfNz5nUdjYjrLSQEKNKPd7vWmfNrMpXZmELeMfnLgSdh4fcG6xULTJnxEJUGLB5hj8H7pXTpQNF6FLfWgAEURgWPMNh2TSLgTfEVNKAM8bmnqewXkk4ZXNJZJ52MhXk6W8XQpsSfKbDgvYkP95hfpeZRhKm5r88bPxRUHM6A4gwn9SdxUZ7kG7peyR995tdfBXJgcGnrxbkNYA72CKcKTJ2SS8VQ4GHFapKrFrNPjqYBm4CVYPYCqeC5AxGazNhfwfNz5nUdjYjrLSQEKNKPd7vWmfNrMpXZmELeMfnLgSdh4fcG6xULTJnxEJUGLB5hj8H7pXTpQNF6FLfWgAEURgWPMNh2TSLgTfEVNKAM8bmnqewXkk4ZXNJZJ52MhXk6W8XQpsSfKbDgvYkP95hfpeZRhKm5r88bPxRUHM6A4gwn9SdxUZ7kG7peyR995tdfBXJgcGnrxbkNYA72CKcKTJ2SS8VQ4GHF==</SignatureValue>
           <KeyInfo>
               <X509Data>
-                  <X509Certificate>MIIEMDCCAxigAwIBAgIJAMFalZXunCIBMA0GCSqGSIb3DQEBBQUAMG0xCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJhbmNpc2NvMRAwDgYDVQQKEwdKYW5reUNvMR8wHQYDVQQDExZUZXN0IElkZW50aXR5IFByb3ZpZGVyMB4XDTE3MDEyNDAwMDY0MloXDTM3MDExOTAwMDY0MlowbTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xEDAOBgNVBAoTB0phbmt5Q28xHzAdBgNVBAMTFlRlc3QgSWRlbnRpdHkgUHJvdmlkZXIwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDP288rg5PndoDbpgcO7/B93BAnA06eS7WNLnT5Nx//H1N1bZv8T2zMgSLBVsEe08+1/fRnfe1lUtiTWqKiaFw8UIrLqf26kqRB5OfImyTqXH88FI8tuZW3ZFLailORNYiJAFElzyv1oaCSieGbrcVuy6xVi01jgyCVI7VkBBX5fubyLXN7muLoH0CtADvSKjRT6jtPZgxfK3ynqRerPwxIWxWkIP29beknnG88wA7SFPgC2VUshcVPH7z4963OtOZygDq46P6E2dYGYj1MXvGpZfQaJ4YTWyWfZYL3hCmZHoaA0dFLqbxj7MoZB92nOLxHZ0ty358gM1CO6yU1BoF5AgMBAAGjgdIwgc8wHQYDVR0OBBYEFGS/D5iSDWk+3hE84V/+Ec5MHh9tMIGfBgNVHSMEgZcwgZSAFGS/D5iSDWk+3hE84V/+Ec5MHh9toXGkbzBtMQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZyYW5jaXNjbzEQMA4GA1UEChMHSmFua3lDbzEfMB0GA1UEAxMWVGVzdCBJZGVudGl0eSBQcm92aWRlcoIJAMFalZXunCIBMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADggEBAI0xpPnT4n29eQ12mtxa3APQlGId9ER27gCj/VJZ6Yk2jhCn52BqWCviV4dsywh1iWd6dJsJ/7tKraYqodzoV3094Zb3tURc1tY7tV5IH3oaj0z7E00Ly94M/dDOe8RcDVcb/4y+nNVONTWtAFomyUGiQ/rDdkEbGolaHX4rCOGUkGvl6coSA5e8H7XDl0iRcxwlwl6t4jRXV72mSBE8RLEDfIqqXkfFlT+jgUUQtIyHXb8GpBxoKwhfNnwpymPwyJcMQU+CoZWyMqxQCEqKb6Am6zj6/bL29DOwT1lWFq6vCFSy4LZlsv4Oiwb5aUjR+xjy3rY2WXDJxlnIBBP+yac=</X509Certificate>
+                  <X509Certificate>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</X509Certificate>
               </X509Data>
           </KeyInfo>
       </Signature>
