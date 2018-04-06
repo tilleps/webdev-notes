@@ -36,6 +36,10 @@
 }
 ```
 
+```
+//  https://stackoverflow.com/questions/36170425/detect-click-outside-element
+Vue.directive('click-outside', require('../common/directives/click-outside'));
+```
 
 
 
