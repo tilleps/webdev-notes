@@ -6,6 +6,11 @@
 - http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html
 - http://lifepluslinux.blogspot.com/2017/01/look-before-you-paste-from-website-to.html
 
+
+
+
+
+
 ## Sign / Verify ##
 
 
@@ -18,6 +23,26 @@ openssl rsa -in private.pem -out public.pem -outform PEM -pubout
   echo -n "data-to-sign" | openssl dgst -RSA-SHA256 -sign private.pem > signed
   base64 signed
 ```
+
+```
+  openssl dgst -RSA-SHA256 -verify public.pem -signature signed
+```
+
+
+ssh-keygen 
+
+
+## Upload SSH Keys ##
+
+
+```
+  ssh-keygen -t rsa -b 4096 -f ~/.ssh/{mykey} -P ''
+  mv !!:6 !!:6.key
+
+  ssh-copy-id -i ~/.ssh/{mykey} {user}@{hostname}
+```
+
+
 
 
 ## Run Script ##
