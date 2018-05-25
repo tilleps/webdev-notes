@@ -156,3 +156,23 @@ chmod 700 ~/.ssh/cp
 ssh -O check jumpbox01
 ssh -O stop jumpbox01
 ```
+
+
+
+# Keys #
+
+
+Generate a self-signed certificate
+```
+openssl req -x509 -new -newkey rsa:2048 -nodes -subj '/C=US/ST=California/L=San Francisco/O=JankyCo/CN=Test Identity Provider' -keyout idp-private-key.pem -out idp-public-cert.pem -days 7300
+```
+
+Convert DER to PEM
+```
+openssl x509 -inform der -in to-convert.der -out converted.pem
+```
+
+Convert Cert to Public Key
+```
+openssl x509 -pubkey -noout -in cert.pem > pub.key
+```
