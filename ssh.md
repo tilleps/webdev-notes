@@ -59,6 +59,10 @@ cat /path/script.sh | ssh user@host 'bash -s'
 ```
 
 
+```bash
+ssh root@192.168.1.1 'bash -s' -- < script.sh --argument
+```
+
 ## Port Forwarding ##
 
 Remote Port Forwarding
