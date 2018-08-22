@@ -1,6 +1,22 @@
 ### OSX Notes ###
 
 
+### Keychain ###
+
+-s service
+-l label
+-w password
+
+
+```bash
+security add-generic-password -a ${USER} -s myfirstaccount -w mypassword databases.keychain-db
+
+security find-generic-password -s myfirstaccount -w databases.keychain-db
+
+security delete-generic-password -s myfirstaccount databases.keychain-db
+```
+
+
 ### Troubleshooting ###
 
 Problem:
@@ -21,4 +37,5 @@ Solution: https://support.apple.com/en-ca/HT203811
 
 
 Screenshot Awesomeness (screenshot regions): `cmd+shift+4` then press `spacebar`
+
 

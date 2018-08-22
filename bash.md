@@ -1,6 +1,6 @@
 # Bash Notes #
 
-
+https://www.netmeister.org/blog/passing-passwords.html
 http://www.davidpashley.com/articles/writing-robust-shell-scripts/
 
 
@@ -116,6 +116,15 @@ rsync -Phurv --exclude='.git/' /source/path remote-server:/path/to/destination
 
 
 ## Scripting Template ##
+
+
+
+
+Get Input from pipe
+```
+INPUT=$(</dev/stdin)
+```
+
 
 ```bash
   #!/usr/bin/env bash
