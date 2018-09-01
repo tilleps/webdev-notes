@@ -34,6 +34,7 @@ location /__STATUS__/node {
 
 ## Dynamic Configs ##
 
+```
 server {
     server_name ~^(?<app_env>.*)\.domain\.com;
     
@@ -43,3 +44,16 @@ server {
       return 200 $app_env;
     }
 }
+```
+
+
+## Request ID ##
+
+```
+set $trace_id $connection-$connection_requests-$msec;
+if ($http_x_request_id) {
+  set $trace_id $http_x_request_id;
+}
+
+add_header X-Trace-ID $trace_id;
+```
