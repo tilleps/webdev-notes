@@ -6,6 +6,11 @@
 - http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html
 - http://lifepluslinux.blogspot.com/2017/01/look-before-you-paste-from-website-to.html
 
+
+
+
+
+
 ## Sign / Verify ##
 
 
@@ -18,6 +23,26 @@ openssl rsa -in private.pem -out public.pem -outform PEM -pubout
   echo -n "data-to-sign" | openssl dgst -RSA-SHA256 -sign private.pem > signed
   base64 signed
 ```
+
+```
+  openssl dgst -RSA-SHA256 -verify public.pem -signature signed
+```
+
+
+ssh-keygen 
+
+
+## Upload SSH Keys ##
+
+
+```
+  ssh-keygen -t rsa -b 4096 -f ~/.ssh/{mykey} -P ''
+  mv !!:6 !!:6.key
+
+  ssh-copy-id -i ~/.ssh/{mykey} {user}@{hostname}
+```
+
+
 
 
 ## Run Script ##
@@ -33,6 +58,10 @@ Or
 cat /path/script.sh | ssh user@host 'bash -s'
 ```
 
+
+```bash
+ssh root@192.168.1.1 'bash -s' -- < script.sh --argument
+```
 
 ## Port Forwarding ##
 
@@ -130,4 +159,24 @@ chmod 700 ~/.ssh/cp
 ```
 ssh -O check jumpbox01
 ssh -O stop jumpbox01
+```
+
+
+
+# Keys #
+
+
+Generate a self-signed certificate
+```
+openssl req -x509 -new -newkey rsa:2048 -nodes -subj '/C=US/ST=California/L=San Francisco/O=JankyCo/CN=Test Identity Provider' -keyout idp-private-key.pem -out idp-public-cert.pem -days 7300
+```
+
+Convert DER to PEM
+```
+openssl x509 -inform der -in to-convert.der -out converted.pem
+```
+
+Convert Cert to Public Key
+```
+openssl x509 -pubkey -noout -in cert.pem > pub.key
 ```

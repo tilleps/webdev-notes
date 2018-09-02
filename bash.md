@@ -118,6 +118,15 @@ rsync -Phurv --exclude='.git/' /source/path remote-server:/path/to/destination
 
 ## Scripting Template ##
 
+
+
+
+Get Input from pipe
+```
+INPUT=$(</dev/stdin)
+```
+
+
 ```bash
   #!/usr/bin/env bash
   #

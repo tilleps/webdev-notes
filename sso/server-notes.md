@@ -1,6 +1,10 @@
 
 ## Developer Notes ##
 
+Postman Redirect URI:
+https://www.getpostman.com/oauth2/callback
+
+
 JWT Format:
 grant_type "urn:ietf:params:oauth:grant-type:jwt-bearer"
 
