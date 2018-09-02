@@ -39,6 +39,10 @@
   box-shadow: inset 0px 0px 50px -9px rgba(0,0,0,0.9);
   border-radius: 10px;
 }
+
+.subtleVignette {
+  box-shadow: inset 0px 0px 150px 0px rgba(100,100,100,0.2);
+}
 ```
 
 

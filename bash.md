@@ -1,7 +1,8 @@
 # Bash Notes #
 
 
-http://www.davidpashley.com/articles/writing-robust-shell-scripts/
+- http://www.davidpashley.com/articles/writing-robust-shell-scripts/
+- https://zwischenzugs.com/2018/01/06/ten-things-i-wish-id-known-about-bash/
 
 
 export HISTCONTROL=ignoreboth:erasedups
@@ -31,14 +32,14 @@ env -S "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$')" node index.js
 
 Loading environment variables from file
 ```
-# Works for OSX (but not Ubuntu ;_;)
-#env -S "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$')" "$@"
+  # Works for OSX (but not Ubuntu ;_;)
+  #env -S "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$')" "$@"
 
-# Works on Ubuntu (not on OSX ;_;)
-#env "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$' | xargs -d "\n" env)" "$@"
+  # Works on Ubuntu (not on OSX ;_;)
+  #env "$(cat ${APP_ENV_FILE} | grep -v ^# | grep -v '^$' | xargs -d "\n" env)" "$@"
 
-# Works for both OSX and Ubuntu, but uses eval ;_;
-eval $(cat ${APP_ENV_FILE} | grep -iE "^[a-z_0-9]+=(\".*\"|'.*')$" | grep -v ^# | grep -v '^$') "$@"
+  # Works for both OSX and Ubuntu, but uses eval ;_;
+  eval $(cat ${APP_ENV_FILE} | grep -iE "^[a-z_0-9]+=(\".*\"|'.*')$" | grep -v ^# | grep -v '^$') "$@"
 ```
 
 
@@ -234,4 +235,33 @@ iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 10022 -j DNAT --to 10.199.1
 Check for clock drift on multiple servers
 ```
 for x in {1..3}; do ssh subdomain0$x.example.com date -u; done
+```
+
+
+## Heredoc ##
+
+```
+cat << EOF > /tmp/yourfilehere
+These contents will be written to the file.
+  This line is indented.
+EOF
+```
+
+```
+cat <<'EOF' |  sed 's/a/b/' | sudo tee /etc/config_file.conf
+foo
+bar
+baz
+EOF
+```
+
+Heredoc within a bash script nice indentation
+```
+#!/usr/bin/env bash
+
+if true ; then
+    cat <<- EOF > /tmp/yourfilehere
+    The leading tab is ignored.
+    EOF
+fi
 ```

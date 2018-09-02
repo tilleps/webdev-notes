@@ -41,5 +41,42 @@
 Vue.directive('click-outside', require('../common/directives/click-outside'));
 ```
 
+VueJS Productivity Tips:
+https://www.youtube.com/watch?v=7lpemgMhi0k
+
+```
+watch: {
+  searchText: {
+    handler: 'fetchUserList',
+    immediate: true
+  }
+}
+```
+same as:
+```
+{
+  created: function () {
+    this.fetchUserList();
+  },
+  watch: {
+    searchText: function () {
+      this.fetchUserList();
+    }
+  }
+}
+```
 
 
+Resetting VueRouter Components
+```
+<router-view :key="$route.fullPath"></router-view>
+```
+
+```
+<template>
+  <input
+    v-bind:value="value"
+    v-on:input="$emit('input', $event.target.value)"
+  />
+</template>
+```
