@@ -274,3 +274,25 @@ if true ; then
     EOF
 fi
 ```
+
+
+## Debounce ##
+
+``` bash
+debounce() {
+  intervalInSeconds="$1";
+  unixtime() {
+    date +%s;
+  }
+  nextTimeLimit() {
+    echo $(($(unixtime) + $intervalInSeconds));
+  }
+  limit=$(nextTimeLimit);
+  while read line; do
+    if test $limit -lt $(unixtime); then
+      limit=$(nextTimeLimit);
+      echo "$line";
+    fi
+  done;
+}
+```
