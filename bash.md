@@ -15,6 +15,13 @@ lsb_release -a
 ```
 
 
+Make bash act as if it had been invoked as a login shell
+```
+#!/bin/bash -l
+```
+
+
+
 ```
 sudo env "PATH=$PATH" command
 ```
