@@ -17,6 +17,13 @@ security delete-generic-password -s myfirstaccount databases.keychain-db
 ```
 
 
+### Open New Terminal Tab via Command Line ###
+
+```bash
+osascript -e 'tell application "Terminal" to activate' -e 'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down'
+```
+
+
 ### Troubleshooting ###
 
 Problem:

@@ -20,6 +20,10 @@ Make bash act as if it had been invoked as a login shell
 #!/bin/bash -l
 ```
 
+```
+SOME_VAR=abcdefgh
+echo ${SOME_VAR:3:-3}
+```
 
 
 ```
