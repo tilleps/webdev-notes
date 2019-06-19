@@ -1,6 +1,6 @@
 # Bash Notes #
 
-
+- https://blog.jez.io/bash-debugger/
 - http://www.davidpashley.com/articles/writing-robust-shell-scripts/
 - https://zwischenzugs.com/2018/01/06/ten-things-i-wish-id-known-about-bash/
 
