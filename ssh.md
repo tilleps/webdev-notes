@@ -82,6 +82,26 @@ Check for existing SSH tunnels
 ```
 
 
+### Port forwarding on remote server
+
+~/.ssh/config
+```ssh
+Host remotehost-proxy
+  HostName remotehost
+  ControlPath ~/.ssh/remotehost-proxy.ctl
+```
+
+Start the forwarding
+```sh
+ssh -f -N -T -M -L 3306:localhost:3306 remotehost-proxy
+```
+
+Stop the forwarding
+```
+ssh -T -O "exit" remotehost-proxy
+```
+
+
 ## Gitlab Setup ##
 `git clone gitlab:user/repo.git`
 
